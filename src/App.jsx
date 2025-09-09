@@ -4,30 +4,43 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [Empresa, setEmpresa] = useState({title: '', description: '', location: '', type:'', company:'', date:''});
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+<form>
+      <h1>Bienvenido a BuscaTuChambeador!</h1>
+
+      <label>Titulo del trabajo asignado: 
+      <input name='title' value = {Empresa.title} />
+      </label>
+<br />
+      <label>Descripcion del laburo: 
+      <input name='description' value = {Empresa.description} />
+      </label>
+<br />
+      <label>Ubicacion: 
+      <input name='location' value = {Empresa.location} />
+      </label>
+<br />
+      <label>Tipo de empleo: 
+      <select name='type' value={Empresa.type}>
+        <option value="fulltime">Full time</option>
+        <option value="parttime">Part time</option>   
+        <option value="freelance">Freelance</option>
+      </select>
+      </label>
+<br />      
+      <label>Empresa que ofrece el empleo: 
+      <input name='company' value = {Empresa.company} />
+      </label>
+<br />
+    <label >Fecha de publicacion: 
+    </label>
+    <p>{new Date().toLocaleDateString()}</p>
+
+      <button type="submit">Buscar mi Chambeador!</button>
+</form>
     </>
   )
 }

@@ -1,34 +1,54 @@
 {
-    "ad": [
-        {
-            "id": "1",
-            "title": "analista",
-            "descripcion": "analizar cosas",
-            "ubicacion": "Malvinas",
-            "type": "Remote",
-            "tiempo": "Full-Time",
-            "empresa": "SYS",
-            "Fecha": "09/09/2025"
-        },
-        {
-            "id": "2",
-            "title": "Desarrollador",
-            "descripcion": "Desarrollar cosas",
-            "ubicacion": "CABA",
-            "type": "On-Site",
-            "tiempo": "Part-Time",
-            "empresa": "TechSA",
-            "Fecha": "10/10/2025"
-        }
-    ],
-    "company": [
-        {
-            "id": "1",
-            "name": "TechSA"
-        },
-        {
-            "id": "2",
-            "name": "SYS"
-        }
-    ]
+  "ad": [
+    {
+      "id": "1",
+      "title": "analista",
+      "description": "analizar cosas",
+      "location": "Malvinas",
+      "type": "Remote",
+      "time": "Full-Time",
+      "company": "SYS",
+      "date": "09/09/2025"
+    },
+    {
+      "id": "2",
+      "title": "Desarrollador",
+      "description": "Desarrollar cosas",
+      "location": "CABA",
+      "type": "On-Site",
+      "time": "Part-Time",
+      "company": "TechSA",
+      "date": "10/10/2025"
+    },
+    {
+      "id": "2643",
+      "title": "asd",
+      "description": "qwe",
+      "location": "twe",
+      "type": "On-Site",
+      "time": "Full-time",
+      "company": "mordor",
+      "date": "10/9/2025"
+    },
+    {
+      "id": "682a",
+      "title": "qwe",
+      "description": "qwew",
+      "location": "qwe",
+      "type": "Remote",
+      "time": "Full-time",
+      "company": "SYS",
+      "date": "10/9/2025"
+    }
+  ],
+  "company": [
+    {
+      "id": "1",
+      "name": "TechSA"
+    },
+    {
+      "id": "2",
+      "name": "SYS"
+    }
+  ]
 }

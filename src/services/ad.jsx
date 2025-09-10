@@ -1,25 +1,21 @@
 import axios from "axios";
-const localUrl = "/db.json";
+
+const baseUrl = "http://localhost:3001/ad";
 
 const getAll = () => {
-  const request = axios.get(localUrl);
-  return request.then((response) => response.data.ad);
+  return axios.get(baseUrl).then((response) => response.data);
 };
 
 const create = (newObject) => {
-  const request = axios.post(localUrl, newObject);
-  return request.then((response) => response.data);
+  return axios.post(baseUrl, newObject).then((response) => response.data);
 };
 
 const update = (id, newObject) => {
-  const request = axios.put(`${localUrl}/${id}`, newObject);
-  return request.then((response) => response.data);
+  return axios.put(`${baseUrl}/${id}`, newObject).then((response) => response.data);
 };
 
 const deletead = (id) => {
-  const request = axios.delete(`${localUrl}/${id}`);
-  return request.then((response) => response.data);
+  return axios.delete(`${baseUrl}/${id}`).then((response) => response.data);
 };
 
 export default { getAll, create, update, deletead };
-

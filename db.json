@@ -2,7 +2,7 @@
     "ad": [
         {
             "id": "1",
-            "name": "analista",
+            "title": "analista",
             "descripcion": "analizar cosas",
             "ubicacion": "Malvinas",
             "type": "Remote",
@@ -12,7 +12,7 @@
         },
         {
             "id": "2",
-            "name": "Desarrollador",
+            "title": "Desarrollador",
             "descripcion": "Desarrollar cosas",
             "ubicacion": "CABA",
             "type": "On-Site",

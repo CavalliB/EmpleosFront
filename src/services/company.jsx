@@ -1,9 +1,9 @@
 import axios from "axios";
-const localUrl = "/company";
+const localUrl = "/db.json";
 
 const getAll = () => {
   const request = axios.get(localUrl);
-  return request.then((response) => response.data);
+  return request.then((response) => response.data.company);
 };
 
 const create = (newObject) => {

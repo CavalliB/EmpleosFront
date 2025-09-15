@@ -18,15 +18,11 @@ function App() {
   });
 
   useEffect(() => {
-    adService.getAll().then((data) => {
-      setAd(data);
-    });
+    adService.getAll().then((data) => setAd(data));
   }, []);
 
   useEffect(() => {
-    companyService.getAll().then((data) => {
-      setCompany(data);
-    });
+    companyService.getAll().then((data) => setCompany(data));
   }, []);
 
   const handleChange = (e) => {
@@ -37,12 +33,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newAd = {
-      title: formAd.title,
-      description: formAd.description,
-      location: formAd.location,
-      type: formAd.type,
-      time: formAd.time,
-      company: formAd.company,
+      ...formAd,
       date: new Date().toLocaleDateString(),
     };
 
@@ -57,7 +48,7 @@ function App() {
         company: "",
         date: "",
       });
-      setSection("anuncios"); // vuelve a la lista de anuncios después de publicar
+      setSection("anuncios"); 
     });
   };
 
@@ -77,16 +68,11 @@ function App() {
         <ul>
           {ad.map((e) => (
             <li key={e.id}>
-              <strong>{e.title}</strong>
-              <br />
-              Descripción: {e.description}
-              <br />
-              Ubicación: {e.location}
-              <br />
-              Tipo: {e.type} ({e.time})
-              <br />
-              Empresa: {e.company}
-              <br />
+              <strong>{e.title}</strong> <br />
+              Descripción: {e.description} <br />
+              Ubicación: {e.location} <br />
+              Tipo: {e.type} ({e.time}) <br />
+              Empresa: {e.company} <br />
               Fecha: {e.date}
             </li>
           ))}
@@ -107,7 +93,7 @@ function App() {
 
       {/* Sección Publicar */}
       <section style={{ display: section === "publicar" ? "block" : "none" }}>
-        <h1>Publica tu empleo</h1>
+        <h1>Publicar nuevo empleo</h1>
         <form onSubmit={handleSubmit}>
           <label>
             Título del puesto:
@@ -115,6 +101,7 @@ function App() {
               name="title"
               value={formAd.title}
               onChange={handleChange}
+              required
             />
           </label>
           <br />
@@ -124,6 +111,7 @@ function App() {
               name="description"
               value={formAd.description}
               onChange={handleChange}
+              required
             />
           </label>
           <br />
@@ -133,6 +121,7 @@ function App() {
               name="location"
               value={formAd.location}
               onChange={handleChange}
+              required
             />
           </label>
           <br />
@@ -155,13 +144,14 @@ function App() {
           </label>
           <br />
           <label>
-            Empresa que ofrece el empleo:
+            Empresa:
             <input
               list="companies"
               name="company"
               value={formAd.company}
               onChange={handleChange}
               placeholder="Escribe o selecciona una empresa"
+              required
             />
             <datalist id="companies">
               {company.map((c) => (
@@ -170,10 +160,9 @@ function App() {
             </datalist>
           </label>
           <br />
-          <label>Fecha de publicación:</label>
-          <p>{new Date().toLocaleDateString()}</p>
+          <p>Fecha de publicación: {new Date().toLocaleDateString()}</p>
 
-          <button type="submit">Buscar mi chambeador!</button>
+          <button type="submit">Publicar</button>
         </form>
         <button onClick={() => setSection("home")}>Volver</button>
       </section>

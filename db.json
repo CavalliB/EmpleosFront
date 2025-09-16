@@ -21,24 +21,14 @@
       "date": "10/10/2025"
     },
     {
-      "id": "2643",
-      "title": "asd",
-      "description": "qwe",
-      "location": "twe",
-      "type": "On-Site",
+      "id": "d63e",
+      "title": "Cocinero",
+      "description": "Cocinar comida rica",
+      "location": "China",
+      "type": "Hybrid",
       "time": "Full-time",
-      "company": "mordor",
-      "date": "10/9/2025"
-    },
-    {
-      "id": "682a",
-      "title": "qwe",
-      "description": "qwew",
-      "location": "qwe",
-      "type": "Remote",
-      "time": "Full-time",
-      "company": "SYS",
-      "date": "10/9/2025"
+      "company": "HAlLs",
+      "date": "16/9/2025"
     }
   ],
   "company": [
@@ -49,6 +39,10 @@
     {
       "id": "2",
       "name": "SYS"
+    },
+    {
+      "id": "58cc",
+      "name": "HAlLs"
     }
   ]
 }

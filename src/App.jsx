@@ -39,6 +39,14 @@ function App() {
 
     adService.create(newAd).then((returnedAd) => {
       setAd(ad.concat(returnedAd));
+      
+      if (!company.some((c) => c.name === formAd.company)) {
+        const newCompany = { name: formAd.company };
+        companyService.create(newCompany).then((returnedCompany) => {
+          setCompany(company.concat(returnedCompany));
+        });
+      }
+
       setFormAd({
         title: "",
         description: "",

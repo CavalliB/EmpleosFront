@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import adService from "./services/ad";
 import companyService from "./services/company";
+import Filter from "./Filter";
+import AdList from "./adList";
 import "./App.css";
 
 function App() {
   const [section, setSection] = useState("home");
   const [ad, setAd] = useState([]);
   const [company, setCompany] = useState([]);
+  const [newFilter, setNewFilter] = useState("");
   const [formAd, setFormAd] = useState({
     title: "",
     description: "",
@@ -39,7 +42,7 @@ function App() {
 
     adService.create(newAd).then((returnedAd) => {
       setAd(ad.concat(returnedAd));
-      
+
       if (!company.some((c) => c.name === formAd.company)) {
         const newCompany = { name: formAd.company };
         companyService.create(newCompany).then((returnedCompany) => {
@@ -56,8 +59,13 @@ function App() {
         company: "",
         date: "",
       });
-      setSection("anuncios"); 
+      setSection("anuncios");
     });
+  };
+
+  const handleFilterChange = (event) => {
+    console.log(event.target.value);
+    setNewFilter(event.target.value);
   };
 
   return (
@@ -72,20 +80,12 @@ function App() {
 
       {/* Sección Anuncios */}
       <section style={{ display: section === "anuncios" ? "block" : "none" }}>
-        <h1>Lista de empleos</h1>
-        <ul>
-          {ad.map((e) => (
-            <li key={e.id}>
-              <strong>{e.title}</strong> <br />
-              Descripción: {e.description} <br />
-              Ubicación: {e.location} <br />
-              Tipo: {e.type} ({e.time}) <br />
-              Empresa: {e.company} <br />
-              Fecha: {e.date}
-            </li>
-          ))}
-        </ul>
-        <button onClick={() => setSection("home")}>Volver</button>
+        <div>
+          <h1>Lista de empleos</h1>
+          filter shown with:{" "}
+          <Filter newfilter={newFilter} onChange={handleFilterChange} />
+        </div>
+        <AdList ad={ad} filter={newFilter} />
       </section>
 
       {/* Sección Empresas */}

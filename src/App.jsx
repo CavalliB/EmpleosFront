@@ -85,7 +85,7 @@ function App() {
           filter shown with:{" "}
           <Filter newfilter={newFilter} onChange={handleFilterChange} />
         </div>
-        <AdList ad={ad} filter={newFilter} />
+        <AdList ad={ad} filter={newFilter} setSection={setSection} />
       </section>
 
       {/* Sección Empresas */}

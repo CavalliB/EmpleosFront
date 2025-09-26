@@ -35,8 +35,14 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const newAd = {
-      ...formAd,
+      title: formAd.title,
+      description: formAd.description,
+      location: formAd.location,
+      type: formAd.type,
+      time: formAd.time,
+      company: formAd.company, 
       date: new Date().toLocaleDateString(),
     };
 
@@ -60,6 +66,8 @@ function App() {
         date: "",
       });
       setSection("anuncios");
+    }).catch(error => {
+      console.error("Error creating ad:", error);
     });
   };
 

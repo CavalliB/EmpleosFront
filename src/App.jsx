@@ -10,6 +10,7 @@ function App() {
   const [ad, setAd] = useState([]);
   const [company, setCompany] = useState([]);
   const [newFilter, setNewFilter] = useState("");
+  const [newFilter2, setNewFilter2] = useState("");
   const [formAd, setFormAd] = useState({
     title: "",
     description: "",
@@ -75,6 +76,10 @@ function App() {
     console.log(event.target.value);
     setNewFilter(event.target.value);
   };
+  const handleFilterChange2 = (event) => {
+    console.log(event.target.value);
+    setNewFilter2(event.target.value);
+  };
 
   return (
     <div>
@@ -90,10 +95,12 @@ function App() {
       <section style={{ display: section === "anuncios" ? "block" : "none" }}>
         <div>
           <h1>Lista de empleos</h1>
-          filter shown with:{" "}
+          filtrar empleos:{" "}
           <Filter newfilter={newFilter} onChange={handleFilterChange} />
+          filtrar por ubicacion:{" "}
+          <Filter newfilter2={newFilter2} onChange={handleFilterChange2} />
         </div>
-        <AdList ad={ad} filter={newFilter} setSection={setSection} />
+        <AdList ad={ad} filter={newFilter} filter2={newFilter2} setSection={setSection} />
       </section>
 
       {/* Sección Empresas */}

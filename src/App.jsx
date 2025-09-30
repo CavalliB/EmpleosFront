@@ -44,7 +44,7 @@ function App() {
       type: formAd.type,
       time: formAd.time,
       company: formAd.company, 
-      date: new Date().toLocaleDateString(),
+      date: new Date().toISOString().slice(0,10),
     };
 
     adService.create(newAd).then((returnedAd) => {
@@ -64,7 +64,6 @@ function App() {
       console.error("Error creating ad:", error);
     });
   };
-
   const handleFilterChange = (event) => {
     console.log(event.target.value);
     setNewFilter(event.target.value);
@@ -177,7 +176,6 @@ function App() {
           </label>
           <br />
           <p>Fecha de publicación: {new Date().toLocaleDateString()}</p>
-
           <button type="submit">Publicar</button>
         </form>
         <button onClick={() => setSection("home")}>Volver</button>

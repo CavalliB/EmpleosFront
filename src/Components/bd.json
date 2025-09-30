@@ -1,0 +1,12 @@
+{
+    "Company": [
+        {
+            "id": 1,
+            "company": "SYS"
+        },
+        {
+            "id": 2,
+            "company": "TechSA"
+        }
+    ]
+}

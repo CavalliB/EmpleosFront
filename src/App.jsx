@@ -4,6 +4,10 @@ import companyService from "./services/company";
 import Filter from "./Filter";
 import AdList from "./adList";
 import "./App.css";
+import Box from '@mui/material/Box';
+import SendIcon from '@mui/icons-material/Send';
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 function App() {
   const [section, setSection] = useState("home");
@@ -11,6 +15,7 @@ function App() {
   const [company, setCompany] = useState([]);
   const [newFilter, setNewFilter] = useState("");
   const [newFilter2, setNewFilter2] = useState("");
+  const [loading, setLoading] = useState(false);
   const [formAd, setFormAd] = useState({
     title: "",
     description: "",
@@ -36,15 +41,17 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    setLoading(true); // ← Activamos el botón en "loading"
+
+
     const newAd = {
       title: formAd.title,
       description: formAd.description,
       location: formAd.location,
       type: formAd.type,
       time: formAd.time,
-      company: formAd.company, 
-      date: new Date().toISOString().slice(0,10),
+      company: formAd.company,
+      date: new Date().toISOString().slice(0, 10),
     };
 
     adService.create(newAd).then((returnedAd) => {
@@ -62,7 +69,11 @@ function App() {
       setSection("anuncios");
     }).catch(error => {
       console.error("Error creating ad:", error);
+    }).finally(() => {
+      setLoading(false); // ← Desactivamos loading
     });
+    ;
+
   };
   const handleFilterChange = (event) => {
     console.log(event.target.value);
@@ -89,7 +100,7 @@ function App() {
           <h1>Lista de empleos</h1>
           filtrar empleos:{" "}
           <Filter newfilter={newFilter} onChange={handleFilterChange} />
-          filtrar por ubicacion:{" "}
+          {" "}filtrar por ubicacion:{" "}
           <Filter newfilter2={newFilter2} onChange={handleFilterChange2} />
         </div>
         <AdList ad={ad} filter={newFilter} filter2={newFilter2} setSection={setSection} />
@@ -103,7 +114,13 @@ function App() {
             <li key={c.id}>{c.name}</li>
           ))}
         </ul>
-        <button onClick={() => setSection("home")}>Volver</button>
+        <Button className="buttontoo"
+          variant="outlined"
+          startIcon={<ArrowBackIcon />}
+          onClick={() => setSection("home")}
+        >
+          Volver
+        </Button>
       </section>
 
       {/* Sección Publicar */}
@@ -176,11 +193,32 @@ function App() {
           </label>
           <br />
           <p>Fecha de publicación: {new Date().toLocaleDateString()}</p>
-          <button type="submit">Publicar</button>
         </form>
-        <button onClick={() => setSection("home")}>Volver</button>
+
+        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+
+          <Button className="buttontoo"
+            variant="outlined"
+            startIcon={<ArrowBackIcon />}
+            onClick={() => setSection("home")}
+          >
+            Volver
+          </Button>
+
+          <Button className="buttontoo"
+            type="submit"
+            endIcon={<SendIcon />}
+            loading={loading}
+            loadingPosition="end"
+            variant="contained"
+          >
+            Publicar
+          </Button>
+
+        </Box>
+
       </section>
-    </div>
+    </div >
   );
 }
 

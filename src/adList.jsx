@@ -1,3 +1,5 @@
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const AdList = ({ ad, filter,filter2, setSection }) => {
   const filteredAds = filter 
     ? ad.filter((a) =>
@@ -28,7 +30,13 @@ const AdList = ({ ad, filter,filter2, setSection }) => {
           </li>
         ))}
       </ul>
-      <button onClick={() => setSection("home")}>Volver</button>
+<Button className="buttontoo"
+  variant="outlined"
+  startIcon={<ArrowBackIcon />}
+  onClick={() => setSection("home")}
+>
+  Volver
+</Button>
     </div>
   );
 };
